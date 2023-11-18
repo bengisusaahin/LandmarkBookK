@@ -2,10 +2,28 @@ package com.bengisusahin.landmarkbookk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bengisusahin.landmarkbookk.databinding.ActivityDetailsBinding
+import com.bengisusahin.landmarkbookk.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var landmarkList : ArrayList<Landmark>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        landmarkList = ArrayList<Landmark>()
+
+        //data
+        val pisa = Landmark("Pisa", "Italy", R.drawable.pisa)
+        val colosseum = Landmark("Colosseum", "Italy", R.drawable.coliseum)
+        val eiffel = Landmark("Eiffel", "France", R.drawable.eiffel)
+        val londonBridge = Landmark("LondonBridge", "UK", R.drawable.london)
+
+        landmarkList.add(pisa)
+        landmarkList.add(colosseum)
+        landmarkList.add(eiffel)
+        landmarkList.add(londonBridge)
     }
 }
