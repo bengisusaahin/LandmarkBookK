@@ -2,6 +2,7 @@ package com.bengisusahin.landmarkbookk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import com.bengisusahin.landmarkbookk.databinding.ActivityDetailsBinding
 import com.bengisusahin.landmarkbookk.databinding.ActivityMainBinding
 
@@ -25,5 +26,15 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(colosseum)
         landmarkList.add(eiffel)
         landmarkList.add(londonBridge)
+
+        //Adapter : Amacı Layout & Data yı birlestirmek
+
+        //Mapping
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
+            landmarkList.map{landmark -> landmark.name }
+        )
+    // simple_list_item_1 -> sadece eger textview gösterceksek
+        binding.listView.adapter = adapter
+
     }
 }
