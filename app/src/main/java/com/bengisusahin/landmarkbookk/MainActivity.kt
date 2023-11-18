@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bengisusahin.landmarkbookk.databinding.ActivityDetailsBinding
 import com.bengisusahin.landmarkbookk.databinding.ActivityMainBinding
 
@@ -29,7 +30,11 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(eiffel)
         landmarkList.add(londonBridge)
 
-        //Adapter : Amacı Layout & Data yı birlestirmek
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        val landmarkAdapter = LandmarkAdapter(landmarkList)
+        binding.recyclerView.adapter = landmarkAdapter
+    // Landmark adapterde position ı size ı alabilmek icin class isminin yanına (val landmarkList: ArrayList<Landmark>) ekledik
+      /*  //Adapter : Amacı Layout & Data yı birlestirmek
 
         //Mapping
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,
@@ -45,5 +50,7 @@ class MainActivity : AppCompatActivity() {
             //landmarkList.get(position)
             startActivity(intent)
         }
+
+       */
     }
 }
