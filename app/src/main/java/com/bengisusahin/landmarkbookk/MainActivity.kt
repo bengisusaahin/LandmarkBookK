@@ -2,6 +2,8 @@ package com.bengisusahin.landmarkbookk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.content.Intent
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.bengisusahin.landmarkbookk.databinding.ActivityDetailsBinding
 import com.bengisusahin.landmarkbookk.databinding.ActivityMainBinding
@@ -36,5 +38,12 @@ class MainActivity : AppCompatActivity() {
     // simple_list_item_1 -> sadece eger textview gösterceksek
         binding.listView.adapter = adapter
 
+        binding.listView.onItemClickListener = AdapterView.OnItemClickListener {
+                parent, view, position, id ->
+            val intent = Intent(MainActivity@this, DetailsActivity::class.java)
+            intent.putExtra("landmark",landmarkList.get(position))
+            //landmarkList.get(position)
+            startActivity(intent)
+        }
     }
 }
